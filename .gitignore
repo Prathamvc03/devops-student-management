@@ -69,3 +69,6 @@ Thumbs.db
 ehthumbs.db
 [Bb]in/
 [Oo]bj/
+
+# Maven / Spring Boot
+/target/

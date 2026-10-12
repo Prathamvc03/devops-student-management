@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+# devops-student-management
+DevOps-Based Student Management Web Application
+
+## Spring Boot API
+
+Run the tests with `mvn test`, then start the API with `mvn spring-boot:run`.
+The demo login endpoint is `POST /api/auth/login` and accepts JSON with either
+a `username` or `email`, plus a non-blank `password`. It returns a dummy token
+when both are present; this is not production authentication.
+=======
 # Student Management System
 
 A production-grade RESTful API and responsive academic web portal for managing student registrations, admissions, enrollment workflows, and registrar operations. Built with **FastAPI**, **SQLite**, **SQLAlchemy 2.0**, **Docker**, **Jenkins**, and **Kubernetes**.
@@ -171,3 +182,31 @@ kubectl apply -f k8s/service.yaml
 kubectl get pods -l app=student-api
 kubectl get svc student-service
 ```
+>>>>>>> origin/develop
+
+---
+
+## 7. Spring Boot Login API (Feature Branch)
+
+A demo login endpoint implemented using Spring Boot.
+
+### Run Tests
+
+```bash
+mvn test
+```
+
+### Start the API
+
+```bash
+mvn spring-boot:run
+```
+
+### Login Endpoint
+
+- **Method:** `POST`
+- **Path:** `/api/auth/login`
+- **Request:** JSON containing `username` or `email`, and `password`.
+- **Response:** A demo authentication token when the required credentials are present.
+
+**Note:** This is a demonstration endpoint, not production authentication.
