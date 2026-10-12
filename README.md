@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# devops-student-management
-DevOps-Based Student Management Web Application
-
-## Spring Boot API
-
-Run the tests with `mvn test`, then start the API with `mvn spring-boot:run`.
-The demo login endpoint is `POST /api/auth/login` and accepts JSON with either
-a `username` or `email`, plus a non-blank `password`. It returns a dummy token
-when both are present; this is not production authentication.
-=======
 # Student Management System
 
 A production-grade RESTful API and responsive academic web portal for managing student registrations, admissions, enrollment workflows, and registrar operations. Built with **FastAPI**, **SQLite**, **SQLAlchemy 2.0**, **Docker**, **Jenkins**, and **Kubernetes**.
@@ -182,13 +171,12 @@ kubectl apply -f k8s/service.yaml
 kubectl get pods -l app=student-api
 kubectl get svc student-service
 ```
->>>>>>> origin/develop
-
 ---
 
-## 7. Spring Boot Login API (Feature Branch)
+## 7. Spring Boot REST API
 
-A demo login endpoint implemented using Spring Boot.
+The Spring Boot API provides demo authentication endpoints and an in-memory
+student directory. Student records are not persisted across application restarts.
 
 ### Run Tests
 
@@ -202,11 +190,21 @@ mvn test
 mvn spring-boot:run
 ```
 
-### Login Endpoint
+### Authentication Endpoints
 
-- **Method:** `POST`
-- **Path:** `/api/auth/login`
-- **Request:** JSON containing `username` or `email`, and `password`.
-- **Response:** A demo authentication token when the required credentials are present.
+- `POST /api/auth/login` — Accepts a `username` or `email` and a non-blank
+  `password`; returns a demo authentication token.
+- `POST /api/auth/register` — Accepts `name`, `email`, and `password`; returns
+  a success response when all fields are present.
 
-**Note:** This is a demonstration endpoint, not production authentication.
+### Student Endpoints
+
+- `POST /api/students` — Creates a student from `name`, `prn`, `department`,
+  and `year`.
+- `GET /api/students` — Lists all students.
+- `GET /api/students/{id}` — Retrieves a student by its generated ID.
+
+Run the tests with `mvn test`, then start the API with `mvn spring-boot:run`.
+
+**Note:** Authentication is demonstrative only, and student data is stored in
+memory; neither is suitable for production use.
